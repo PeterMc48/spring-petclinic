@@ -4,7 +4,7 @@ pipeline{
         stage("build"){
             steps{
                 bat "C:/DevOps/apache-maven-3.8.1/bin/mvn -version"
-                bat "mvn clean package"
+                bat "C:/DevOps/apache-maven-3.8.1/bin/mvn clean package"
             }
         }
         stage("test"){
