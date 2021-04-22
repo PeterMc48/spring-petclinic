@@ -1,10 +1,14 @@
 pipeline{
     agent any
+
+    tools{
+        maven "Maven 3.8.1"
+    }
     stages{
         stage("build"){
             steps{
-                bat "C:/DevOps/apache-maven-3.8.1/bin/mvn -version"
-                bat "C:/DevOps/apache-maven-3.8.1/bin/mvn clean package"
+                bat "mvn -version"
+                bat "mvn clean package"
             }
         }
         stage("test"){
