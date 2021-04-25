@@ -6,6 +6,7 @@ pipeline
     {
         maven "Maven 3.8.1"
         jdk "Java SE 9.0.4"
+        git "Git"
     }
     stages{
         stage("build")
@@ -65,7 +66,7 @@ pipeline
             steps
             {
                 sshagent(['UserID']) {
-                    sh "C:/Program Files/Git/usr/bin ssh -o StrictHostKeyChecking=no docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
+                    sh "ssh -o StrictHostKeyChecking=no docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
                 }
               
             }
