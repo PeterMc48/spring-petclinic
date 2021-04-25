@@ -55,7 +55,7 @@ pipeline{
                 {
                      bat "docker login -u mccaffertydocker -p ${Dockerhubpassword}"
                 }
-                     bat 'docker push mccaffertydocker/petclinic:latest'
+                     bat 'docker push mccaffertydocker/petclinic:2.0.0'
             }
         }
 
