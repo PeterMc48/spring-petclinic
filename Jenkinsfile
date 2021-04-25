@@ -59,7 +59,7 @@ pipeline{
             }
         }
         
-        stage('Deploy Docker Image To EC2 Instance')
+        stage("Deploy Docker Image To EC2 Instance")
         {​​​​​​​
             steps
             {​​​​​​​
