@@ -6,7 +6,7 @@ pipeline
     {
         maven "Maven 3.8.1"
         jdk "Java SE 9.0.4"
-        git "Git 1.0"
+       
     }
     stages{
         stage("build")
