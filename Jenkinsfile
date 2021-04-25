@@ -1,7 +1,9 @@
-pipeline{
+pipeline
+{
     agent any
 
-    tools{
+    tools
+    {
         maven "Maven 3.8.1"
         jdk "Java SE 9.0.4"
     }
@@ -58,24 +60,21 @@ pipeline{
                      bat 'docker push mccaffertydocker/petclinic:2.0.0'
             }
         }
-        
-        stage("Deploy Docker Image To EC2 Instance")
+        stage("Deploy Image To EC2 Instance")
         {​​​​​​​
             steps
             {​​​​​​​
-                script
-                {​​​​​​​
-                    def deploy = "docker run --publish 80:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
-                    def stop = "docker stop petclinic || true"
-                    def remove = "docker rm petclinic || true"
-                    def instance = "ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com"
-                    sshagent(['EC2UserID']) 
-                    {
-                        sh "ssh -T -o StrictHostKeyChecking=no ${​​​​​​​instance}​​​​​​​ ${​​​​​​​stop}​​​​​​​"
-                        sh "ssh -T -o StrictHostKeyChecking=no ${​​​​​​​instance}​​​​​​​ ${​​​​​​​remove}​​​​​​​"
-                        sh "ssh -T -o StrictHostKeyChecking=no ${​​​​​​​instance}​​​​​​​ ${​​​​​​​deploy}​​​​​​​"
-                    }
-                }​​​​​​​
+ 
+                sshagent(['EC2UserID']) 
+                {
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker stop petclinic || true"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker rm petclinic || true"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker rmi \$(docker images -a -q) || true"
+
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker run --publish 80:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
+                
+                }
+                ​​​​
             }​​​​​​​
         }​​​​​​​
 
