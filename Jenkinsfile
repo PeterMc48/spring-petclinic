@@ -44,7 +44,7 @@ pipeline{
         {
             steps
             {
-                sh 'docker build -t mccaffertydocker/petclinic:2.0.0 .'
+                bat 'docker build -t mccaffertydocker/petclinic:2.0.0 .'
             }
         }
 
