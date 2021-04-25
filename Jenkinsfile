@@ -44,7 +44,7 @@ pipeline{
         {
             steps
             {
-                sh 'docker build -t mccaffertydocker/jenkins-pipeline:2.0.0 .'
+                sh 'docker build -t mccaffertydocker/petclinic:2.0.0 .'
             }
         }
 
