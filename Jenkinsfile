@@ -55,9 +55,9 @@ pipeline
             {
                 withCredentials([string(credentialsId: 'dockerhubpassword', variable: 'Dockerhubpassword')]) 
                 {
-                     bat "docker login -u mccaffertydocker -p ${Dockerhubpassword}"
+                    bat "docker login -u mccaffertydocker -p ${Dockerhubpassword}"
                 }
-                     bat 'docker push mccaffertydocker/petclinic:2.0.0'
+                    bat 'docker push mccaffertydocker/petclinic:2.0.0'
             }
         }
         stage("Deploy Docker Image To EC2")
