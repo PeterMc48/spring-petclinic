@@ -66,7 +66,7 @@ pipeline
             steps
             {
                 sshagent(['EC2FileID']) {
-                    bat "C:/Program Files/Git/bin/ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
+                    sh "C:/Program Files/Git/bin/ssh -o StrictHostKeyChecking=no ec2-user@172.31.21.98 docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
                 }
               
             }
