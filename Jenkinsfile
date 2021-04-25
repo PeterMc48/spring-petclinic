@@ -66,8 +66,8 @@ pipeline
             {​​​​​​​
                 sshagent(['EC2UserID']) 
                 {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker run --publish 80:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
-                    
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker run -p 80:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
+
                     sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker stop petclinic || true"
                     sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker rm petclinic || true"
                     sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-52-7-235-115.compute-1.amazonaws.com docker rmi \$(docker images -a -q) || true"
