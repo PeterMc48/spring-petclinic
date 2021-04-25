@@ -64,10 +64,10 @@ pipeline
         {
             steps
             {
-                sshagent(['EC2UserID'])
-                {
+                sshagent(['EC2UserID']) {
                     sh "ssh -o StrictHostKeyChecking=no docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
                 }
+              
             }
         }
         
