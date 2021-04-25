@@ -40,5 +40,13 @@ pipeline{
             }
             
         }
+        stage("Build Docker Image")
+        {
+            steps
+            {
+                sh 'docker build -t mccaffertydocker/jenkins-pipeline:2.0.0 .'
+            }
+        }
+
     }
 }
