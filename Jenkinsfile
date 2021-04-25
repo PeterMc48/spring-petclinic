@@ -65,7 +65,7 @@ pipeline
             steps
             {
                 sshagent(['UserID']) {
-                    sh "C:/Program Files/Git/usr/bin/ssh -o StrictHostKeyChecking=no docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
+                    sh "C:/Program Files/Git/usr/bin ssh -o StrictHostKeyChecking=no docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
                 }
               
             }
