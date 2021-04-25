@@ -47,6 +47,17 @@ pipeline{
                 bat 'docker build -t mccaffertydocker/petclinic:2.0.0 .'
             }
         }
+        stage("Push Docker Image")
+        {
+            steps
+            {
+                withCredentials([string(credentialsId: 'dockerhubpassword', variable: 'Dockerhubpassword')]) 
+                {
+                     bat "docker login -u mccaffertydocker -p ${Dockerhubpassword}"
+                }
+                     bat 'docker push mccaffertydocker/spring-petclinic:latest'
+            }
+        }
 
     }
 }
