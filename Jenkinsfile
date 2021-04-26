@@ -66,10 +66,10 @@ pipeline
             steps
             {
                 sshagent(['EC2FileID']) {
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-54-167-13-173.compute-1.amazonaws.com docker stop petclinic || true"
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-54-167-13-173.compute-1.amazonaws.com docker rm petclinic || true"           
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@54.167.13.173 docker stop petclinic || true"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@54.167.13.173 docker rm petclinic || true"           
 
-                    sh "ssh -o StrictHostKeyChecking=no ec2-user@ec2-54-167-13-173.compute-1.amazonaws.com docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
+                    sh "ssh -o StrictHostKeyChecking=no ec2-user@54.167.13.173 docker run -p 8080:8080 -d --name petclinic mccaffertydocker/petclinic:2.0.0"
                 } 
             }
         }
